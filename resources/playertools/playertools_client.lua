@@ -14,8 +14,8 @@ AddEventHandler("godPlayer",
 	end
 )
 
-RegisterNetEvent("invisiblePlayer")
-AddEventHandler("invisiblePlayer",
+RegisterNetEvent("visiblePlayer")
+AddEventHandler("visiblePlayer",
 	function(toggle)
 		local player = GetPlayerPed(-1)
 		SetEntityVisible(player, toggle)
@@ -27,5 +27,13 @@ AddEventHandler("collidePlayer",
 	function(toggle)
 		local player = GetPlayerPed(-1)
 		SetEntityCollision(player, toggle)
+	end
+)
+
+RegisterNetEvent("posPlayer")
+AddEventHandler("posPlayer",
+	function(x, y, z)
+		local player = GetPlayerPed(-1)
+		SetEntityCollision(player, x, y, z)
 	end
 )

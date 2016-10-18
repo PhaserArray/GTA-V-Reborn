@@ -9,6 +9,10 @@ AddEventHandler("onJoin",
 			function()
 				loginFocus = true
 				local username = GetPlayerName(-1)
+				TriggerEvent("freezePlayer", true)
+				TriggerEvent("godPlayer", true)
+				TriggerEvent("visiblePlayer", false)
+				TriggerEvent("collidePlayer", false)
 				SetNuiFocus(true)
 				SendNUIMessage({
 					meta = "showLogin",
@@ -17,13 +21,13 @@ AddEventHandler("onJoin",
 				})
 				repeat
 					Citizen.Wait(0)
-					DisableControlAction(0, 1, loginFocus)
-					DisableControlAction(0, 2, loginFocus)
-					DisableControlAction(0, 142, loginFocus)
-					DisableControlAction(0, 106, loginFocus)
 				until not loginFocus
 				TriggerServerEvent("print", "done?")
 				SetNuiFocus(false)
+				TriggerEvent("freezePlayer", false)
+				TriggerEvent("godPlayer", false)
+				TriggerEvent("visiblePlayer", true)
+				TriggerEvent("collidePlayer", true)
 			end
 		)
 	end
@@ -50,7 +54,7 @@ RegisterNUICallback("submit",
 			TriggerEvent("passwordChecked", false)
 		else
 			TriggerServerEvent("print", "here>1")
-			TriggerServerEvent("passwordSubmit", data.password) -- TODO: Figure out a way to hash the password?
+			TriggerServerEvent("passwordSubmit", data.password) -- TODO: Figure out a way to hash the password prior to sending it to the server?
 		end
 		callback("ok")
 	end

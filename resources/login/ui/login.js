@@ -36,7 +36,7 @@ $(function()
 					$(".type-text").text("Register");
 					$(".returning-user").text("");
 				}
-				$("#passwordInput")[0].focus();
+				$("#passwordInput").focus();
 			case "passwordChecked":
 				print("passwordChecked");
 				if (!data.correct)
@@ -45,7 +45,11 @@ $(function()
 					if ($("#please-login").hasClass("fail"))
 					{
 						print("epic");
-						$("#please-login").addClass("epic").delay(500).removeClass("epic");
+						$("#please-login").addClass("epic");
+						window.setTimeout(function()
+						{
+							$("#please-login").removeClass("epic");
+						}, 500);
 					}
 					else
 					{
@@ -61,10 +65,5 @@ $(function()
 					$("#wrap").removeClass("flex");
 				}
 		}
-
-		/*if (data.meta == "passwordChecked")
-		{
-			
-		}*/
 	}, false);
 });

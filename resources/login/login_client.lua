@@ -22,7 +22,6 @@ AddEventHandler("onJoin",
 				repeat
 					Citizen.Wait(0)
 				until not loginFocus
-				TriggerServerEvent("print", "done?")
 				SetNuiFocus(false)
 				TriggerEvent("freezePlayer", false)
 				TriggerEvent("godPlayer", false)
@@ -36,7 +35,6 @@ AddEventHandler("onJoin",
 RegisterNetEvent("passwordChecked")
 AddEventHandler("passwordChecked", 
 	function(correct)
-		TriggerServerEvent("print", "checked pass")
 		SendNUIMessage({
 			meta = "passwordChecked",
 			correct = correct
@@ -50,21 +48,16 @@ AddEventHandler("passwordChecked",
 RegisterNUICallback("submit",
 	function(data, callback)
 		if data.password:len() < 1 then
-			TriggerServerEvent("print", "here<1")
 			TriggerEvent("passwordChecked", false)
 		else
-			TriggerServerEvent("print", "here>1")
 			TriggerServerEvent("passwordSubmit", data.password) -- TODO: Figure out a way to hash the password prior to sending it to the server?
 		end
 		callback("ok")
 	end
 )
 
-RegisterNUICallback("print", 
+RegisterNUICallback("print", -- Used to receive print commands from JS.
 	function(data, callback)
-
-		TriggerServerEvent("print", "NUI callback recieved!")
-
 		if data.message then
 			TriggerServerEvent("print", data.message)
 		end

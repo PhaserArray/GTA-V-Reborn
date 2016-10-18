@@ -41,3 +41,6 @@ luac.out
 
 # Batch Files
 *.bat
+
+# Certain folders
+old_resources/

@@ -44,13 +44,9 @@ body {
 }
 
 #letter {
-	visibility: hidden;
 	color: white;
 	font-size: 19vh;
-}
-
-#letter:first-letter {
-	visibility: visible;
+	text-transform: uppercase;
 }
 
 #name-area {
@@ -78,19 +74,29 @@ p {
 	font-size: small;
 }
 
-#input-area #please-login {
+#input-area #login-info {
 	color: #666;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.25s ease-in-out;
 }
 
-#input-area #please-login.fail {
+#input-area #login-info.incorrect {
 	color: #A33;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.25s ease-in-out;
 }
 
-#input-area #please-login.fail.epic {
-	color: #F00;
-	transition: all 0.5s ease-in-out;
+#input-area #login-info.incorrect.iflash {
+	color: #F33;
+	transition: all 0.25s ease-in-out;
+}
+
+#input-area #login-info.correct {
+	color: #3A3;
+	transition: all 0.25s ease-in-out;
+}
+
+#input-area #login-info.correct.cflash {
+	color: #3F3;
+	transition: all 0.25s ease-in-out;
 }
 
 #welcome-text {
@@ -100,7 +106,7 @@ p {
 	white-space: nowrap;
 }
 
-#please-login .type-text {
+#login-info .type-text {
 	text-transform: lowercase;
 }
 

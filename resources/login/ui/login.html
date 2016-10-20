@@ -9,9 +9,7 @@
             <div id="background">
                 <div class="flex" id="name-area">
                     <div class="flex" id="circle">
-                        <h class="username-first-letter" id="letter">
-                            P
-                        </h>
+                        <h class="username-first-letter" id="letter"></h>
                     </div>
                 </div>
                 <div id="welcome">
@@ -22,10 +20,14 @@
                 </div>
                 <div class="flex" id="input-area">
                     
-                    <p id="please-login">Please 
-                        <span class="type-text">login</span>
-                         to continue! </p>
-                    <form class="flex" id="passwordForm" action="#" onsubmit="handleSubmit(event)"><input id="passwordInput" type="password" name="Password" placeholder="Password"></form>
+                    <p id="login-info">
+                        <span class="first-half"></span> 
+                        <span class="type-text"></span>
+                        <span class="second-half"></span> 
+                    </p>
+                    <form class="flex" id="passwordForm" action="#" onsubmit="handleSubmit(event)">
+                        <input id="passwordInput" type="password" name="Password" placeholder="Password" autofocus>
+                    </form>
                     <p class="warning">Warning: The passwords are currently stored in plain text!</p>
                 </div>
             </div>

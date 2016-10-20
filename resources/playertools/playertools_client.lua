@@ -1,3 +1,13 @@
+RegisterNetEvent("protectPlayer")
+AddEventHandler("protectPlayer",
+	function(toggle)
+		TriggerEvent("freezePlayer", toggle)
+		TriggerEvent("godPlayer", toggle)
+		TriggerEvent("visiblePlayer", not toggle)
+		TriggerEvent("collidePlayer", not toggle)
+	end
+)
+
 RegisterNetEvent("freezePlayer")
 AddEventHandler("freezePlayer",
 	function(toggle)

@@ -11,6 +11,10 @@ function checkPassword(playerId, password)
 	end
 end
 
+function registerPlayer(playerId, password)
+	-- TODO: Register player!
+end
+
 RegisterServerEvent("print")
 AddEventHandler("print", -- Used to print from client.
 	function(msg)
@@ -38,17 +42,20 @@ AddEventHandler("registered", -- Triggered when the player has sucessefully regi
 
 RegisterServerEvent("passwordSubmit")
 AddEventHandler("passwordSubmit", -- Triggered by the client when a password is submitted for checking.
-	function(password)
-		if not isRegistered(source) then
-			-- TODO: Register player!
-			TriggerClientEvent("passwordChecked", source, true)
-			TriggerEvent("registered")
-		elseif checkPassword(source, password) then
+	function(data)
+		if not isRegistered(source) and  then
+			if data.password == data.confirmPassword then
+				registerPlayer(source, data.password)
+				TriggerClientEvent("passwordChecked", source, true)
+				TriggerEvent("registered")
+				return
+			end
+		elseif checkPassword(source, data.password) then
 			TriggerClientEvent("passwordChecked", source, true)
 			TriggerEvent("loggedIn")
-		else
-			TriggerClientEvent("passwordChecked", source, false)
+			return
 		end
+		TriggerClientEvent("passwordChecked", source, false)
 	end
 )
 

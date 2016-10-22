@@ -3,14 +3,15 @@ $(function()
 	function print(message) // Print to server console.
 	{
 		var obj = {message:message};
-		$.post("http://login/print", JSON.stringify(obj)); // This call the print callback.
+		$.post("http://login/print", JSON.stringify(obj)); // This calls the print callback.
 	}
 
 	$("#passwordForm").submit(function(event) // Submit password for checking when the form is submitted.
 	{
 		event.preventDefault();
-		var input = $("#passwordInput").val();
-		var data = {password:input};
+		var passwordInput = $("#passwordInput").val();
+		var confirmPasswordInput = $("#confirmPasswordInput").val();
+		var data = {password:passwordInput,confirmPassword:confirmPasswordInput};
 		$.post("http://login/submit", JSON.stringify(data)); // This calls the submit callback.
 	});
 
@@ -18,7 +19,8 @@ $(function()
 	{
 		var data = event.data; // I didn't want to type event every time..
 
-		switch (data.meta) {
+		switch (data.meta) 
+		{
 			case "showLogin": // Show login.
 				$("#wrap").addClass("flex");
 				$("#passwordInput").focus();
@@ -32,11 +34,13 @@ $(function()
 					$(".type-text").text("Login");
 					$(".returning-user").text("back ");
 					$("#wrap").addClass("isregistered");
+					$("#confirmPasswordInput").prop("disabled", true);
 				}
 				else
 				{
 					$(".type-text").text("Register");
 					$(".returning-user").text("");
+					$("#confirmPasswordInput").prop("disabled", false);
 				}
 				break;
 			case "passwordChecked": // Submitted password was checked.

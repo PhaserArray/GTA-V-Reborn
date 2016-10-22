@@ -57,7 +57,7 @@ RegisterNUICallback("submit", -- Triggered when JS calls back with the entered p
 		if data.password:len() < 1 then -- Don't allow empty strings.
 			TriggerEvent("passwordChecked", false)
 		else
-			TriggerServerEvent("passwordSubmit", data.password) -- TODO: Figure out a way to hash the password prior to sending it to the server?
+			TriggerServerEvent("passwordSubmit", data) -- TODO: Figure out a way to hash the password(s) prior to sending it to the server?
 		end
 		callback("ok")
 	end

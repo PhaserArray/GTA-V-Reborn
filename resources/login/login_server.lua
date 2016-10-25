@@ -43,7 +43,7 @@ AddEventHandler("registered", -- Triggered when the player has sucessefully regi
 RegisterServerEvent("passwordSubmit")
 AddEventHandler("passwordSubmit", -- Triggered by the client when a password is submitted for checking.
 	function(data)
-		if not isRegistered(source) and  then
+		if not isRegistered(source) then
 			if data.password == data.confirmPassword then
 				registerPlayer(source, data.password)
 				TriggerClientEvent("passwordChecked", source, true)
